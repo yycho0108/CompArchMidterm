@@ -1,10 +1,10 @@
 `include "dflipflop.v"
-//------------------------------------------------------------------------
+// ====================================================================================
 // Input Conditioner
 //    1) Synchronizes input to clock domain
 //    2) Debounces input
 //    3) Creates pulses at edge transitions
-//------------------------------------------------------------------------
+// ====================================================================================
 
 module inputconditioner
 (
@@ -14,6 +14,13 @@ output reg  conditioned,    // Conditioned output signal
 output reg  positiveedge,   // 1 clk pulse at rising edge of conditioned
 output reg  negativeedge    // 1 clk pulse at falling edge of conditioned
 );
+
+wire sync0, sync1;
+
+dflipflop dff1(clk, noisysignal, sync0);
+dflipflop dff2(clk, sync0, sync1);
+counter cnt(clk, reset, done);
+
 
     parameter counterwidth = 3; // Counter size, in bits, >= log2(waittime)
     parameter waittime = 3;     // Debounce delay, in clock cycles

@@ -1,14 +1,13 @@
 `ifndef __RINGCOUNTER_V__
 `define __RINGCOUNTER_V__
-`include "defs.v"
 `include "dflipflop.v"
 `define NOR nor
 
 // ====================================================================================
 // RingCounter
-// In the module, I had to use the reset signal because verilog didn't realize
-// that the counter resolves to 0 after a period of time passes no matter
-// what.
+// In the module, I had to create a reset signal to force the pin states,
+// because verilog didn't realize that the counter ultimately resolve to 0
+// after a period of time no matter the initial state.
 // ====================================================================================
 
 module ringcounter
@@ -16,11 +15,12 @@ module ringcounter
 (
 	input clk,
 	input en,
-	input reset,
 	output [N-1:0] q
 );
 
 wire [N:0] d;
+wire reset;
+assign reset = (q === 4'bx); // force reset on indeterminate state, prevent verilog error.
 
 generate
 	genvar i;

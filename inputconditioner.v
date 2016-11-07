@@ -16,7 +16,7 @@ module inputconditioner
 (
 	input 	    clk,            // Clock domain to synchronize input to
 	input	    sig_in,    // (Potentially) noisy input signal
-	output wire cond,    // Conditioned output signal
+	output wire  cond,    // Conditioned output signal
 	output wire  rising,   // 1 clk pulse at rising edge of cond
 	output wire  falling    // 1 clk pulse at falling edge of cond
 );
@@ -41,7 +41,7 @@ dflipflop dff2(clk, sync0, sync1);
 
 // counter increment logic
 // assign en = _reset;
-ringcounter #(.N(T)) cnt(clk, 1'b1, (cond === sync1), cnts); // ring counter always enabled, reset on cond == sync1
+ringcounter #(.N(T)) cnt(clk, 1'b1, cnts); // ring counter always enabled
 // triple comparison to overcome verilog limitations about x
 
 // now, if count has reached T-1 ...

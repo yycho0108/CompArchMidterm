@@ -1,7 +1,6 @@
 `ifndef __DFLIPFLOP_V__
 `define __DFLIPFLOP_V__
 `include "defs.v"
-`include "sr_latch.v"
 `include "muxnbit.v"
 
 module dflipflop
@@ -36,6 +35,7 @@ module dflipflop_en
 );
 
 wire din;
+
 
 muxnbit #(.n(1)) mux(din, {d,q}, en); // en == 1 --> d, en == 0 --> q
 dflipflop dff(clk,din,q);

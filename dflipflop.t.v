@@ -1,7 +1,5 @@
 `ifndef __DFLIPFLOP_T_V__
 `define __DFLIPFLOP_T_V__
-`include "defs.v"
-
 `include "dflipflop.v"
 
 `define WAITH #250
@@ -10,7 +8,7 @@
 module test_dflipflop();
 
 reg clk=0, en=0, d=0;
-wire q;
+wire q, _q;
 integer it;
 
 dflipflop_en dffp(clk, en, d,q);

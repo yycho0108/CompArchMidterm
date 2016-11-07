@@ -32,8 +32,8 @@ wire [T-1:0] cnts; // counts to 3
 //dflipflop dff0(clk, ~clk, _clk); //deliberately wait
 
 // signal propagation
-dflipflop dff1(clk, sig_in, sync0); // posedge clock ...
-dflipflop dff2(clk, sync0, sync1);
+dflipflop dff1(clk, sig_in, sync0,); // posedge clock ...
+dflipflop dff2(clk, sync0, sync1,);
 
 // counter reset logic
 //`XOR (_reset, cond, sync1); // cond != sync1

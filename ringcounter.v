@@ -1,7 +1,7 @@
 `ifndef __RINGCOUNTER_V__
 `define __RINGCOUNTER_V__
+`include "defs.v"
 `include "dflipflop.v"
-`define NOR nor
 
 // ====================================================================================
 // RingCounter

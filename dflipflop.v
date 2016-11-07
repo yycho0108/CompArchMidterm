@@ -7,10 +7,11 @@ module dflipflop
 (
 	input  clk,
 	input    d,
-	output   q
+	output   q,
+	output _q
 );
 
-wire _s,_r, wa, wb, _q;
+wire _s,_r, wa, wb;
 
 // intermediate values
 `NAND na_a(wa, _r, d);
@@ -33,12 +34,12 @@ module dflipflop_en
 	input    d,
 	output   q
 );
-
+wire _q;
 wire din;
 
 
 muxnbit #(.n(1)) mux(din, {d,q}, en); // en == 1 --> d, en == 0 --> q
-dflipflop dff(clk,din,q);
+dflipflop dff(clk,din,q, _q);
 
 endmodule
 `endif

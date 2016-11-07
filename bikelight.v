@@ -1,3 +1,5 @@
+`ifndef __BIKELIGHT_V__
+`define __BIKELIGHT_V__
 `include "inputconditioner.v"
 `include "ringcounter.v"
 `include "muxnbit.v"
@@ -43,3 +45,4 @@ assign led = ((q[0] & 1'b0) | (q[1] & 1'b1) | (q[2] & blink_clk) | (q[3] & dim_c
 
 
 endmodule
+`endif

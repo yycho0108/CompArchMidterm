@@ -47,8 +47,8 @@ ringcounter #(.N(T)) cnt(clk, 1'b1, cnts); // ring counter always enabled
 
 // now, if count has reached T-1 ...
 muxnbit #(.n(1)) mux(cond, {sync1,cond}, cnts[T-1]); // if true choose sync1
-`AND pe(rising, sync1, cnts[T-1]);
-`AND ne(falling, !sync1, cnts[T-1]);
+`AND pe(rising, sync1, ~cond); // sync pos, cond neg
+`AND ne(falling, ~sync1, cond);
 
 endmodule
 `endif

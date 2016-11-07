@@ -8,7 +8,7 @@ reg btn = 0;
 wire [3:0] state;
 bikelight bklt(clk, btn, state, led);
 
-integer seed = 3;
+integer seed = 449;
 integer i = 0;
 integer j = 0;
 
@@ -24,7 +24,7 @@ initial begin
 
 		for(i = 0; i < 20; i=i+1) begin
 			btn= {$random(seed)} % 2; // either 0 or 1, completely random
-			for(j=0; j<20; j=j+1) begin
+			for(j=0; j<160; j=j+1) begin
 				`CLK;
 			end
 
@@ -34,8 +34,6 @@ initial begin
 				`CLK;
 			end
 		end
-
-		#10000;
 
 		$finish(); // necessary to end simulation
 

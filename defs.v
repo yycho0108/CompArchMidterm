@@ -1,15 +1,15 @@
 `ifndef __DEFS_V__
 `define __DEFS_V__
 
-`define NOT not #100
-`define JKNOT not #500 // special for jk
-`define NAND nand #200
-`define AND and #300
-`define NOR nor #200
-`define OR or #300
-`define XNOR xnor #500
-`define XOR xor #500
-`define CLKH #5000
-`define CLK #5000
+`define NOT not #1
+`define JKNOT not #5 // special for jk
+`define NAND nand #2
+`define AND and #3
+`define NOR nor #2
+`define OR or #3
+`define XNOR xnor #5
+`define XOR xor #5
+`define CLKH #50
+`define CLK #50
 
 `endif

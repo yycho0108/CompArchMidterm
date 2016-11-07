@@ -4,7 +4,6 @@
 `include "defs.v"
 `include "ringcounter.v"
 
-`define WAIT #500
 module test_ringcounter();
 
 reg clk = 0;
@@ -14,7 +13,7 @@ wire [3:0] q;
 
 integer i;
 
-ringcounter #(.N(4)) rc(clk, en,q);
+ringcounter #(.N(8)) rc(clk, en,q);
 
 always begin
 	`CLKH
@@ -28,13 +27,13 @@ initial begin
 	en = 0;
 	reset = 1;
 	for(i=0;i<10;i=i+1) begin
-		`WAIT;
+		`CLK;
 	end
 
 	en = 1;
 	reset = 0;
 	for(i=0;i<100;i=i+1) begin
-		`WAIT;
+		`CLK;
 	end
 	$finish();
 end

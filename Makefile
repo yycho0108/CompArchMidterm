@@ -1,5 +1,11 @@
 all : run
 
+build: dff.o jff.o ringcounter.o upcounter.o inputconditioner.o bikelight.o encoder.o
+
+run : build
+	./dff.o && ./jff.o && ./ringcounter.o && ./upcounter.o ./inputconditioner.o && ./bikelight.o && ./encoder.o
+
+
 dff.o : dflipflop.v dflipflop.t.v muxnbit.v sr_latch.v
 	iverilog dflipflop.t.v -o dff.o
 jff.o : jkflipflop.v jkflipflop.t.v
@@ -14,10 +20,9 @@ upcounter.o : jff.o upcounter.t.v upcounter.v
 inputconditioner.o : inputconditioner.v ringcounter.o inputconditioner.t.v
 	iverilog inputconditioner.t.v -o inputconditioner.o
 
+encoder.o : encoder.v encoder.t.v
+	iverilog encoder.t.v -o encoder.o
+
 bikelight.o : bikelight.v bikelight.t.v inputconditioner.o upcounter.o
 	iverilog bikelight.t.v -o bikelight.o
 
-build: dff.o jff.o ringcounter.o upcounter.o inputconditioner.o bikelight.o
-
-run : build
-	./dff.o && ./jff.o && ./ringcounter.o && ./upcounter.o ./inputconditioner.o && ./bikelight.o

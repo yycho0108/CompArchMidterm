@@ -1,5 +1,7 @@
+`ifndef __COUNTER_V__
+`define __COUNTER_V__
+`include "defs.v"
 `include "dflipflop.v"
-`define OR or #50
 
 // =====================
 // Counter
@@ -17,12 +19,19 @@ module counter
 reg done;
 wire reset;
 
-`OR (reset, reset_in, done);
-
 // currently editing counter
 //
-dflipflop dff0(clk,d,q);
 
-and(done, c[0], c[1], c[2]);
+assign done = &(c); // all 1
+
+`OR (reset, reset_in, done);
+
+generate
+	genvar i;
+	for(i=1; i<=N; i=i+1) : gencntblk
+		dflipflop dff(clk, d[i-1] & !reset, d[i]);
+	end
+endgenerate
 
 endmodule
+`endif

@@ -1,3 +1,7 @@
+`ifndef __RINGCOUNTER_T_V__
+`define __RINGCOUNTER_T_V__
+`include "defs.v"
+
 `include "ringcounter.v"
 `define WAIT #50
 module test_ringcounter();
@@ -33,3 +37,4 @@ initial begin
 end
 
 endmodule
+`endif

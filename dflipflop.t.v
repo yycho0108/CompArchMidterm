@@ -1,3 +1,7 @@
+`ifndef __DFLIPFLOP_T_V__
+`define __DFLIPFLOP_T_V__
+`include "defs.v"
+
 `include "dflipflop.v"
 
 `define WAITH #250
@@ -37,3 +41,4 @@ initial begin
 end
 
 endmodule
+`endif

@@ -1,4 +1,6 @@
-`define NAND nand #5
+`ifndef __SR_LATCH_V__
+`define __SR_LATCH_V__
+`include "defs.v"
 
 module sr_latch
 (
@@ -8,7 +10,8 @@ module sr_latch
 	output _q
 );
 
-`NAND top(q,s,_q);
-`NAND bot(_q,r,q);
+`NOR top(q,s,_q);
+`NOR bot(_q,r,q);
 
 endmodule
+`endif

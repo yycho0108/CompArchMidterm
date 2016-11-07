@@ -2,9 +2,6 @@
 `define __DFLIPFLOP_T_V__
 `include "dflipflop.v"
 
-`define WAITH #250
-`define WAIT #500
-
 module test_dflipflop();
 
 reg clk=0, en=0, d=0;
@@ -14,7 +11,7 @@ integer it;
 dflipflop_en dffp(clk, en, d,q);
 
 always begin
-	`WAITH
+	`CLKH
 	clk = !clk;
 end
 
@@ -22,17 +19,14 @@ initial begin
 	$dumpfile("dflipflop.vcd");
 	$dumpvars;
 	en = 0;
-	`WAIT;
-	`WAIT;
+	`CLK;
 	en = 1;
 	d = 1;
-	`WAIT;
-	`WAIT;
-	`WAIT;
+	`CLK;
 	d = 0;
-	`WAIT;
+	`CLK;
 	for(it=0; it<10; it=it+1) begin
-		`WAIT;
+		`CLK;
 	end
 
 	$finish();

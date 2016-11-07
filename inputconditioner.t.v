@@ -23,7 +23,8 @@ module testConditioner();
 
     // Generate clock (50MHz)
 	always begin
-		#250 clk=!clk;    // 50MHz Clock
+		`CLKH
+		clk=!clk;    // 50MHz Clock
 	end
 
 	initial begin

@@ -15,7 +15,7 @@ upcounter #(.N(4)) uc(clk, q);
 
 
 always begin
-	`WAIT;
+	`CLKH
 	clk = !clk;
 end
 

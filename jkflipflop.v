@@ -29,7 +29,7 @@ wire rq, _rq, _clk, clk_posedge;
 assign rq = ( (q === (1'bx)) ? 1'b0 : q); //force resolve q
 assign _rq = ~rq; 
 
-not #30(_clk, clk); // posedge
+`JKNOT (_clk, clk); // posedge
 
 `AND (clk_posedge, _clk, clk);// 30 + 20 + 20 + 20 + 20 = 110
 

@@ -5,14 +5,15 @@ module test_bikelight();
 
 reg clk = 0;
 reg btn = 0;
-
-bikelight bklt(clk, btn, led);
+wire [3:0] state;
+bikelight bklt(clk, btn, state, led);
 
 integer seed = 3;
 integer i = 0;
+integer j = 0;
 
 always begin
-	#250 clk = !clk;
+	`CLKH clk = !clk;
 end
 
 initial begin
@@ -22,10 +23,16 @@ initial begin
 		clk=0;
 
 		for(i = 0; i < 20; i=i+1) begin
-			btn = {$random(seed)} % 2; // either 0 or 1, completely random
-			#2000;
-			btn = 0; // release
-			#10000;
+			btn= {$random(seed)} % 2; // either 0 or 1, completely random
+			for(j=0; j<20; j=j+1) begin
+				`CLK;
+			end
+
+			btn= 0; // release
+
+			for(j=0; j<100; j=j+1) begin
+				`CLK;
+			end
 		end
 
 		#10000;

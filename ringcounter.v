@@ -19,8 +19,7 @@ module ringcounter
 );
 
 wire [N:0] d;
-wire reset;
-assign reset = (q === 4'bx); // force reset on indeterminate state, prevent verilog error.
+wire reset = (q === 4'bx); // force reset on indeterminate state, prevent verilog error.
 
 generate
 	genvar i;

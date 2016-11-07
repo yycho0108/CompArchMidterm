@@ -25,6 +25,7 @@ wire _clk;
 
 wire reset;
 wire _reset;
+
 wire sync0, sync1;
 wire [T-1:0] cnts; // counts to 3
 

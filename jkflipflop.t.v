@@ -9,7 +9,7 @@ wire q,_q;
 jkflipflop jff(clk, j,k,q,_q);
 
 always begin
-	#50;
+	`CLKH
 	clk = !clk;
 end
 

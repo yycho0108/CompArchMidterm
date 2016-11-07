@@ -21,16 +21,10 @@ module inputconditioner
 	output wire  falling    // 1 clk pulse at falling edge of cond
 );
 
-wire _clk;
-
-wire reset;
-wire _reset;
+wire _cond;
 
 wire sync0, sync1;
 wire [T-1:0] cnts; // counts to 3
-
-`NOT (_clk, clk); //deliberately wait
-//dflipflop dff0(clk, ~clk, _clk); //deliberately wait
 
 // signal propagation
 dflipflop dff1(clk, sig_in, sync0,); // posedge clock ...
@@ -47,7 +41,8 @@ ringcounter #(.N(T)) cnt(clk, 1'b1, cnts); // ring counter always enabled
 
 // now, if count has reached T-1 ...
 muxnbit #(.n(1)) mux(cond, {sync1,cond}, cnts[T-1]); // if true choose sync1
-`AND pe(rising, sync1, ~cond); // sync pos, cond neg
+`NOT (_cond, cond);
+`AND pe(rising, sync1, _cond); // sync pos, cond neg
 `AND ne(falling, ~sync1, cond);
 
 endmodule

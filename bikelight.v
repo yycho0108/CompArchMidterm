@@ -24,7 +24,7 @@ wire [3:0] uc_q;
 
 wire ring_en;
 
-inputconditioner #(.T(4)) cd0(clk, btn, ,ring_en, ); // not using conditioned / falling; only trigger on rising
+inputconditioner #(.T(2)) cd0(clk, btn, ,ring_en, ); // not using conditioned / falling; only trigger on rising
 
 ringcounter #(.N(4)) rc(clk, ring_en, state);  // state == state, reset on indeterminate state ...
 

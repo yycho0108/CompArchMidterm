@@ -10,8 +10,8 @@ module fpga_wrapper(
 
 wire [3:0] state;
 wire bikelight_led;
-wire ring_en;
-bikelight bklt(clk, btn[0], state, bikelight_led, ring_en);
+//wire ring_en;
+bikelight bklt(clk, btn[0], state, bikelight_led);
 
 // alternatively,
 // encoder enc(clk, led[1:2], blkt.state);
@@ -23,7 +23,7 @@ bikelight bklt(clk, btn[0], state, bikelight_led, ring_en);
 
 //always @(posedge clk) begin
     //if(sw[0] == 1'b0) begin
-    assign led[0] = ring_en; // set to state
+    assign led[0] = 1'b0; // set to state
     assign led[1] = bikelight_led;
     assign led[2] = state[1] | state[3];
     assign led[3] = state[2] | state[3];

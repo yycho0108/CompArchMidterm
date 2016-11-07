@@ -25,6 +25,11 @@ initial begin
 	`CLK;
 	d = 0;
 	`CLK;
+	`CLK;
+	`CLK;
+	d=1;
+	`CLK;
+	`CLK;
 	for(it=0; it<10; it=it+1) begin
 		`CLK;
 	end

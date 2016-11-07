@@ -9,11 +9,11 @@ module test_ringcounter();
 reg clk = 0;
 reg en = 0;
 reg reset = 1;
-wire [3:0] q;
+wire [5:0] q;
 
 integer i;
 
-ringcounter #(.N(8)) rc(clk, en,q);
+ringcounter #(.N(6)) rc(clk, en,q);
 
 always begin
 	`CLKH

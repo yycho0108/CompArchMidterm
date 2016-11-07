@@ -3,7 +3,7 @@ all : run
 build: dff.o jff.o ringcounter.o upcounter.o inputconditioner.o bikelight.o encoder.o
 
 run : build
-	./dff.o && ./jff.o && ./ringcounter.o && ./upcounter.o ./inputconditioner.o && ./bikelight.o && ./encoder.o
+	./dff.o && ./jff.o && ./ringcounter.o && ./upcounter.o && ./inputconditioner.o && ./bikelight.o && ./encoder.o
 
 
 dff.o : dflipflop.v dflipflop.t.v muxnbit.v sr_latch.v defs.v

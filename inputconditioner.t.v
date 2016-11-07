@@ -37,7 +37,7 @@ module testConditioner();
 
 		for(it = 0; it < 100; it=it+1) begin
 			pin = {$random(seed)} % 2; // either 0 or 1, completely random
-			#1000; // wait for a duration of time misaligned to the clock, to demonstrate synchronization
+			#840; // wait for a duration of time misaligned to the clock, to demonstrate synchronization
 			$display("%b %b %b %b", pin, conditioned, rising, falling);
 		end
 

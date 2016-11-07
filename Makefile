@@ -14,7 +14,7 @@ upcounter.o : jff.o upcounter.t.v upcounter.v
 inputconditioner.o : inputconditioner.v ringcounter.o inputconditioner.t.v
 	iverilog inputconditioner.t.v -o inputconditioner.o
 
-bikelight.o : bikelight.v bikelight.t.v inputconditioner.o
+bikelight.o : bikelight.v bikelight.t.v inputconditioner.o upcounter.o
 	iverilog bikelight.t.v -o bikelight.o
 
 build: dff.o jff.o ringcounter.o upcounter.o inputconditioner.o bikelight.o

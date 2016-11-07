@@ -14,7 +14,6 @@ module upcounter
 #(parameter N=4)
 (
 	input clk,
-	input reset,
 	output [N-1:0] q
 );
 
@@ -39,7 +38,7 @@ generate
 	genvar i;
 	for(i = 0; i < N; i = i + 1) begin: upgenblk
 		`AND (j[i+1], j[i], q[i]);
-		jkflipflop jff(clk, j[i], !reset & j[i], q[i],); // don't care about _q
+		jkflipflop jff(clk, j[i], j[i], q[i],); // don't care about _q
 	end
 endgenerate
 

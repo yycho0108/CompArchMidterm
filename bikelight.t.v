@@ -21,10 +21,14 @@ initial begin
 
 		clk=0;
 
-		for(i = 0; i < 100; i=i+1) begin
+		for(i = 0; i < 20; i=i+1) begin
 			btn = {$random(seed)} % 2; // either 0 or 1, completely random
-			#1000; // wait for a duration of time misaligned to the clock, to demonstrate synchronization
+			#2000;
+			btn = 0; // release
+			#10000;
 		end
+
+		#10000;
 
 		$finish(); // necessary to end simulation
 

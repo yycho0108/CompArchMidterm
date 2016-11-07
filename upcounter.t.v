@@ -8,12 +8,12 @@
 module test_upcounter();
 
 reg clk = 0;
-reg en = 0;
+reg reset = 0;
 wire [3:0] q;
 
 integer i;
 
-upcounter #(.N(4)) uc(clk, en, q);
+upcounter #(.N(4)) uc(clk, reset, q);
 
 always begin
 	`WAIT;
@@ -24,11 +24,11 @@ initial begin
 	$dumpfile("upcounter.vcd");
 	$dumpvars;
 
-	en = 0;
-	for(i=0;i<10;i=i+1) begin
+	reset = 1;
+	for(i=0;i<20;i=i+1) begin
 		`WAIT;
 	end
-	en = 1;
+	reset = 0;
 	for(i=0;i<100;i=i+1) begin
 		`WAIT;
 	end

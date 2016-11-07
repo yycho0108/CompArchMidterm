@@ -14,11 +14,11 @@ module upcounter
 #(parameter N=4)
 (
 	input clk,
-	input en,
+	input reset,
 	output [N-1:0] q
 );
 
-// --- non-parametrized version
+// --- non-parametrized 4-bit version
 //wire q01, q012;
 //jkflipflop jff0(clk, 1'b1, 1'b1, q[0],);
 //`AND a0(j0, 1, q[0]); // --> j[0]
@@ -39,7 +39,7 @@ generate
 	genvar i;
 	for(i = 0; i < N; i = i + 1) begin: upgenblk
 		`AND (j[i+1], j[i], q[i]);
-		jkflipflop jff(clk, j[i], j[i], q[i],); // don't care about _q
+		jkflipflop jff(clk, j[i], !reset & j[i], q[i],); // don't care about _q
 	end
 endgenerate
 
